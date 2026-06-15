@@ -159,3 +159,31 @@ button:hover, a.btn:hover {
     transform: translateY(-12px);
   }
 }
+
+.galeria-stickers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sticker-card {
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 15px;
+  width: 220px;
+}
+
+.sticker-card img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.sticker-card:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+
+
+
