@@ -8,55 +8,115 @@
 </head>
 <body>
 
-  <div class="container">
-    <div class="card">
-      <h1>Minijuego: Encuentra a Stitch 🛸</h1>
+<div class="container">
+  <div class="card">
+    <h1>Encuentra a Stitch 🛸</h1>
 
-      <p>Haz clic y encuentra a Stitch escondido 👀</p>
+    <p>
+      Mira bien dónde está Stitch... luego los cubitos se mezclarán 👀
+    </p>
 
-      <div class="game" id="game"></div>
+    <button onclick="iniciarJuego()">Empezar mezcla 🎲</button>
 
-      <div id="mensajeJuego" class="message-box hidden"></div>
-    </div>
+    <div class="cubos" id="cubos"></div>
+
+    <div id="mensajeJuego" class="message-box hidden"></div>
   </div>
+</div>
 
-  <script src="script.js"></script>
-  <script>
-    function crearJuego() {
-      const game = document.getElementById("game");
-      game.innerHTML = "";
+<script src="script.js"></script>
 
-      const stitchPosition = Math.floor(Math.random() * 12);
+<script>
+  const personajes = [
+    { nombre: "snoopy", texto: "🐶", mensaje: "Nopis, encontraste a Snoopy xd 🐶" },
+    { nombre: "minnie", texto: "🎀", mensaje: "Nopis, encontraste a Minnie 🎀" },
+    { nombre: "stitch", texto: '<img src="stitch.png" class="stitch-img">', mensaje: "¡Lo encontraste! 🎉 Era Stitch 💙🛸" },
+    { nombre: "nadota", texto: "NADOTA", mensaje: "NADOTA 😂 Ese no era xd" }
+  ];
 
-      for (let i = 0; i < 12; i++) {
-        const btn = document.createElement("button");
+  let orden = [...personajes];
+  let puedeElegir = false;
 
-        if (i === stitchPosition) {
-          btn.innerHTML = '<img src="stitch.png" class="stitch-img">';
-          btn.onclick = function() {
-            document.getElementById("mensajeJuego").innerHTML =
-              "¡Lo encontraste! 🎉 Stitch estaba escondido 💙🛸";
-            document.getElementById("mensajeJuego").classList.remove("hidden");
+  function mostrarCubos(mostrarContenido = true) {
+    const contenedor = document.getElementById("cubos");
+    contenedor.innerHTML = "";
 
-            localStorage.setItem("stitchCompletado", "true");
-            crearConfeti();
+    orden.forEach((item, index) => {
+      const cubo = document.createElement("button");
+      cubo.className = "cubo";
+      cubo.onclick = () => elegir(index);
 
-            setTimeout(() => {
-              window.location.href = "chisme.html";
-            }, 1300);
-          };
-        } else {
-          btn.innerHTML = "🎂";
-          btn.onclick = function() {
-            alert("Nopis, ahí no era xd 😂");
-          };
-        }
-
-        game.appendChild(btn);
+      if (mostrarContenido) {
+        cubo.innerHTML = item.texto;
+      } else {
+        cubo.innerHTML = "🎁";
       }
+
+      contenedor.appendChild(cubo);
+    });
+  }
+
+  function iniciarJuego() {
+    puedeElegir = false;
+    document.getElementById("mensajeJuego").classList.add("hidden");
+
+    orden = [...personajes];
+    mostrarCubos(true);
+
+    setTimeout(() => {
+      mostrarCubos(false);
+      mezclarCubos(8);
+    }, 1800);
+  }
+
+  function mezclarCubos(veces) {
+    if (veces === 0) {
+      puedeElegir = true;
+      document.getElementById("mensajeJuego").innerHTML =
+        "Ahora sí... ¿dónde quedó Stitch? 👀";
+      document.getElementById("mensajeJuego").classList.remove("hidden");
+      return;
     }
 
-    crearJuego();
-  </script>
+    orden.sort(() => Math.random() - 0.5);
+    mostrarCubos(false);
+
+    setTimeout(() => {
+      mezclarCubos(veces - 1);
+    }, 350);
+  }
+
+  function elegir(index) {
+    if (!puedeElegir) {
+      alert("Espera que terminen de mezclarse, joven hambreado xd 😂");
+      return;
+    }
+
+    const elegido = orden[index];
+    const mensaje = document.getElementById("mensajeJuego");
+
+    mostrarCubos(true);
+
+    mensaje.innerHTML = elegido.mensaje;
+    mensaje.classList.remove("hidden");
+
+    if (elegido.nombre === "stitch") {
+      localStorage.setItem("stitchCompletado", "true");
+      crearConfeti();
+
+      setTimeout(() => {
+        window.location.href = "chisme.html";
+      }, 1800);
+    } else {
+      setTimeout(() => {
+        mensaje.innerHTML = "Otra vez, Clau 👀 Mira bien a Stitch 💙";
+        iniciarJuego();
+      }, 1800);
+    }
+  }
+
+  mostrarCubos(true);
+</script>
+
 </body>
 </html>
