@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia de Clau 🧩</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Trivia de Clau 🧩</h1>
+
+      <div class="message-box">
+        <p>1. ¿Qué animal la persiguió?</p>
+        <button onclick="responderTrivia(1, 'vaca')">Vaca 🐄</button>
+        <button onclick="responderTrivia(1, 'pollo')">Pollo 🐔</button>
+
+        <p>2. ¿Qué animal le da miedo?</p>
+        <button onclick="responderTrivia(2, 'pavo')">Pavo 🦃</button>
+        <button onclick="responderTrivia(2, 'gato')">Gato 🐱</button>
+
+        <p>3. ¿Qué postre le gusta?</p>
+        <button onclick="responderTrivia(3, 'tiramisu')">Tiramisú 🍰</button>
+        <button onclick="responderTrivia(3, 'gelatina')">Gelatina 🍮</button>
+      </div>
+
+      <div id="resultadoTrivia" class="message-box hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    let puntosTrivia = 0;
+    let respondidas = {};
+
+    function responderTrivia(numero, respuesta) {
+      if (respondidas[numero]) {
+        alert("Esa ya la respondiste, joven hambreado xd 😂");
+        return;
+      }
+
+      const correctas = {
+        1: "vaca",
+        2: "pavo",
+        3: "tiramisu"
+      };
+
+      respondidas[numero] = true;
+
+      if (respuesta === correctas[numero]) {
+        puntosTrivia++;
+        alert("Correcto 💙");
+      } else {
+        alert("Nopis 😂");
+      }
+
+      if (puntosTrivia === 3) {
+        document.getElementById("resultadoTrivia").innerHTML =
+          "Te conoces muy bien a Clau 😂💙";
+        document.getElementById("resultadoTrivia").classList.remove("hidden");
+
+        localStorage.setItem("triviaCompletada", "true");
+        crearConfeti();
+
+        setTimeout(() => {
+          window.location.href = "final.html";
+        }, 1800);
+      }
+    }
+  </script>
+</body>
+</html>

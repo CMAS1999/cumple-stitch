@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuentra a Stitch 🛸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Minijuego: Encuentra a Stitch 🛸</h1>
+
+      <p>Haz clic y encuentra a Stitch escondido 👀</p>
+
+      <div class="game" id="game"></div>
+
+      <div id="mensajeJuego" class="message-box hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function crearJuego() {
+      const game = document.getElementById("game");
+      game.innerHTML = "";
+
+      const stitchPosition = Math.floor(Math.random() * 12);
+
+      for (let i = 0; i < 12; i++) {
+        const btn = document.createElement("button");
+
+        if (i === stitchPosition) {
+          btn.innerHTML = "💙";
+          btn.onclick = function() {
+            document.getElementById("mensajeJuego").innerHTML =
+              "¡Lo encontraste! 🎉 Stitch estaba escondido 💙🛸";
+            document.getElementById("mensajeJuego").classList.remove("hidden");
+
+            localStorage.setItem("stitchCompletado", "true");
+            crearConfeti();
+
+            setTimeout(() => {
+              window.location.href = "chisme.html";
+            }, 1300);
+          };
+        } else {
+          btn.innerHTML = "🎂";
+          btn.onclick = function() {
+            alert("Nopis, ahí no era xd 😂");
+          };
+        }
+
+        game.appendChild(btn);
+      }
+    }
+
+    crearJuego();
+  </script>
+</body>
+</html>

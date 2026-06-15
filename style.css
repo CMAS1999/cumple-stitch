@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.18);
+  padding: 30px;
+  border-radius: 28px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+  margin-top: 40px;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+p {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.stitch {
+  font-size: 90px;
+  animation: bounce 1.8s infinite;
+}
+
+button, a.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: none;
+  padding: 14px 25px;
+  margin: 8px;
+  border-radius: 25px;
+  background: #2563eb;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover, a.btn:hover {
+  transform: scale(1.08);
+  background: #1d4ed8;
+}
+
+.hidden {
+  display: none;
+}
+
+.message-box {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.22);
+  font-size: 19px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  animation: float 5s linear forwards;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.countdown {
+  font-size: 23px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.game {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.game button {
+  font-size: 30px;
+  padding: 15px;
+  border-radius: 18px;
+}
+
+.chisme-box {
+  position: relative;
+  height: 220px;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#btnMoises, #btnClau {
+  position: absolute;
+  transition: 0.3s;
+}
+
+#btnMoises {
+  left: 15%;
+  top: 80px;
+}
+
+#btnClau {
+  right: 15%;
+  top: 80px;
+  background: #9333ea;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}

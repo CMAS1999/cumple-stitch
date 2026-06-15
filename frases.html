@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frases de Clau 😂</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Necesito una sonrisa 💙</h1>
+
+      <p>Presiona el botón y aparecerá una frase nivel Clau 😂</p>
+
+      <button onclick="fraseAleatoria()">Dame una frase de Clau 😂</button>
+
+      <div id="fraseClau" class="message-box hidden"></div>
+
+      <br><br>
+
+      <button onclick="continuar()">Ya sonreí, continuar 🛸</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const frasesClau = [
+      "NADOTA 😂",
+      "Te conozco mosco 👀",
+      "Malcriado xd",
+      "Atrevido xd",
+      "Veremos dijo el ciego 😂",
+      "Ummm dijo la vaca 🐄",
+      "Joven hambreado 🍽️",
+      "Nopis 💙",
+      "Qué ocioso los jóvenes de hoy en día 😂",
+      "Eres más espeso que el Quaker xd",
+      "Hoy te toca ser feliz 💙",
+      "Stitch te manda un abrazo 🛸",
+      "Sonríe un poquito 🌺",
+      "Tu regalo secreto te espera 🎁"
+    ];
+
+    function fraseAleatoria() {
+      const caja = document.getElementById("fraseClau");
+      const frase = frasesClau[Math.floor(Math.random() * frasesClau.length)];
+      caja.innerHTML = frase;
+      caja.classList.remove("hidden");
+    }
+
+    function continuar() {
+      localStorage.setItem("frasesCompletadas", "true");
+      window.location.href = "juego-stitch.html";
+    }
+  </script>
+</body>
+</html>

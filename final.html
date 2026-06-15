@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final épico 🎆</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card" id="contenidoFinal"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const completo =
+      localStorage.getItem("cartaCompletada") === "true" &&
+      localStorage.getItem("frasesCompletadas") === "true" &&
+      localStorage.getItem("stitchCompletado") === "true" &&
+      localStorage.getItem("chismeCompletado") === "true" &&
+      localStorage.getItem("triviaCompletada") === "true";
+
+    const caja = document.getElementById("contenidoFinal");
+
+    if (completo) {
+      caja.innerHTML = `
+        <h1>🎆 Lo lograste, Clau 🎆</h1>
+
+        <div class="stitch">💙🛸🌺</div>
+
+        <p>
+          Llegaste al final de esta pequeña aventura hecha especialmente para ti.
+        </p>
+
+        <p>
+          Te conoces muy bien a Clau... aunque también quedó comprobado
+          que la más chismosa eras tú 😂💙
+        </p>
+
+        <p>
+          Gracias por abrir esta sorpresa. Espero que este cumpleaños te regale
+          muchas sonrisas, momentos bonitos y recuerdos que te abracen el corazón.
+        </p>
+
+        <h2>Feliz cumpleaños, Clau 🌺🎂🛸</h2>
+
+        <button onclick="reiniciar()">Volver a empezar 💙</button>
+      `;
+
+      crearConfeti();
+    } else {
+      caja.innerHTML = `
+        <h1>Nopis 😂</h1>
+        <p>Todavía te falta completar la aventura.</p>
+        <a class="btn" href="index.html">Volver al inicio 💙</a>
+      `;
+    }
+
+    function reiniciar() {
+      localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

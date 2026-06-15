@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartita para Clau 💌</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Una cartita para ti 💌</h1>
+
+      <p>
+        Clau, hoy quería recordarte que eres una personita muy especial.
+        Espero que tu cumpleaños esté lleno de cosas lindas, risas, cariño
+        y momentos que te hagan feliz.
+      </p>
+
+      <p>
+        Gracias por existir y por dejarme compartir un pedacito de este día contigo 💙
+      </p>
+
+      <button onclick="desbloquear()">Continuar 💙</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function desbloquear() {
+      localStorage.setItem("cartaCompletada", "true");
+      crearConfeti();
+      setTimeout(() => {
+        window.location.href = "frases.html";
+      }, 900);
+    }
+  </script>
+</body>
+</html>

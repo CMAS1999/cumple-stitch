@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detector de chisme 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Detector oficial de chisme 👀</h1>
+
+      <p>¿Quién es más chismoso o chismosa? Elige sabiamente 😂</p>
+
+      <div class="chisme-box">
+        <button id="btnMoises" onclick="escaparMoises()">MOISÉS</button>
+        <button id="btnClau" onclick="ganarChisme()">CLAU</button>
+      </div>
+
+      <div id="mensajeChisme" class="message-box hidden"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    let intentosMoises = 0;
+    let escalaMoises = 1;
+    let escalaClau = 1;
+
+    const frasesChisme = [
+      "Nopis, por acá no era xd 😂",
+      "Tienes que aceptar la verdad 👀",
+      "Presiona CLAU, no te hagas 😂",
+      "El botón de Moisés se está escondiendo xd",
+      "Clau, ya sabemos la respuesta 🫢",
+      "Moisés está usando modo invisible 😂",
+      "Mientras más lo intentas, Clau se vuelve más sospechosa 👀",
+      "A ver, joven hambreado, presiona donde es 😂",
+      "Te conozco mosco, tú sabes la respuesta 😂"
+    ];
+
+    function escaparMoises() {
+      const btnMoises = document.getElementById("btnMoises");
+      const btnClau = document.getElementById("btnClau");
+      const mensaje = document.getElementById("mensajeChisme");
+
+      intentosMoises++;
+      escalaMoises -= 0.12;
+      escalaClau += 0.18;
+
+      if (escalaMoises < 0.35) escalaMoises = 0.35;
+      if (escalaClau > 2.2) escalaClau = 2.2;
+
+      const nuevaX = Math.random() * 65;
+      const nuevaY = Math.random() * 130;
+
+      btnMoises.style.left = nuevaX + "%";
+      btnMoises.style.top = nuevaY + "px";
+      btnMoises.style.transform = `scale(${escalaMoises})`;
+
+      btnClau.style.transform = `scale(${escalaClau})`;
+
+      mensaje.innerHTML = frasesChisme[Math.floor(Math.random() * frasesChisme.length)];
+      mensaje.classList.remove("hidden");
+
+      if (intentosMoises >= 6) {
+        mensaje.innerHTML = "Ya está difícil culpar a Moisés... CLAU está brillando mucho 😂💙";
+      }
+    }
+
+    function ganarChisme() {
+      const mensaje = document.getElementById("mensajeChisme");
+
+      mensaje.innerHTML = `
+        🎉 Respuesta correcta 🎉
+        <br><br>
+        La más chismosa es... CLAU 😂💙
+        <br><br>
+        Pero chismosa tierna, así que se le perdona 🥹✨
+      `;
+
+      mensaje.classList.remove("hidden");
+      localStorage.setItem("chismeCompletado", "true");
+      crearConfeti();
+
+      setTimeout(() => {
+        window.location.href = "trivia.html";
+      }, 2200);
+    }
+  </script>
+</body>
+</html>
