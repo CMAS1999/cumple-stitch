@@ -11,6 +11,20 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
 }
+.confeti {
+  position: fixed;
+  top: -30px;
+  animation: caer 4s linear forwards;
+  pointer-events: none;
+  z-index: 999;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
 
 .container {
   max-width: 900px;
