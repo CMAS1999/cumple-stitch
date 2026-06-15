@@ -24,6 +24,22 @@
         <p>3. ¿Qué postre le gusta?</p>
         <button onclick="responderTrivia(3, 'tiramisu')">Tiramisú 🍰</button>
         <button onclick="responderTrivia(3, 'gelatina')">Gelatina 🍮</button>
+
+        <p>4. ¿Cuáles son los colores favoritos de Clau? 🎨</p>
+
+<button onclick="responderTrivia(4, 'correcto')">
+💙 Azul, 🤍 Blanco y 🌸 Rosa
+</button>
+
+<button onclick="responderTrivia(4, 'incorrecto')">
+💚 Verde, 🖤 Negro y ❤️ Rojo
+</button>
+
+<button onclick="responderTrivia(4, 'incorrecto')">
+🧡 Naranja, 💜 Morado y 💛 Amarillo
+</button>
+
+      
       </div>
 
       <div id="resultadoTrivia" class="message-box hidden"></div>
@@ -45,6 +61,7 @@
         1: "vaca",
         2: "paloma",
         3: "tiramisu"
+        4: "correcto"
       };
 
       respondidas[numero] = true;
@@ -56,7 +73,7 @@
         alert("Nopis 😂");
       }
 
-      if (puntosTrivia === 3) {
+      if (puntosTrivia === 4) {
         document.getElementById("resultadoTrivia").innerHTML =
           "Te conoces muy bien a Clau 😂💙";
         document.getElementById("resultadoTrivia").classList.remove("hidden");
