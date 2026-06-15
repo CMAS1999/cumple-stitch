@@ -43,7 +43,7 @@
 
     orden.forEach((item, index) => {
       const cubo = document.createElement("button");
-      cubo.className = "cubo";
+      cubo.className = "cubo mezclando";
       cubo.onclick = () => elegir(index);
 
       if (mostrarContenido) {
@@ -65,7 +65,7 @@
 
     setTimeout(() => {
       mostrarCubos(false);
-      mezclarCubos(8);
+      mezclarCubos(5);
     }, 1800);
   }
 
