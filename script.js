@@ -11,7 +11,7 @@ function crearCorazon() {
   }, 5000);
 }
 
-setInterval(crearCorazon, 700);
+setInterval(crearCorazon, 1800);
 
 function crearConfeti() {
   const emojis = ["💙", "✨", "🌺", "🎂", "🛸"];
