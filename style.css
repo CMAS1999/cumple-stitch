@@ -184,6 +184,10 @@ button:hover, a.btn:hover {
   transition: 0.3s;
 }
 
-
+.stitch-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
 
 
