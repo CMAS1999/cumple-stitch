@@ -1,7 +1,14 @@
 function crearCorazon() {
   const heart = document.createElement("div");
   heart.className = "heart";
-  heart.innerHTML = "💙";
+  const corazones = [
+  "💙",
+  "🤍",
+  "🌸"
+];
+
+heart.innerHTML =
+  corazones[Math.floor(Math.random() * corazones.length)];
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = Math.random() * 25 + 15 + "px";
   document.body.appendChild(heart);
@@ -14,7 +21,7 @@ function crearCorazon() {
 setInterval(crearCorazon, 1800);
 
 function crearConfeti() {
-  const emojis = ["💙", "✨", "🌺", "🎂", "🛸"];
+  const emojis = ["💙", "🤍", "🩷", "✨", "🌺", "🎂", "🛸"];
 
   for (let i = 0; i < 25; i++) {
     const confeti = document.createElement("div");
