@@ -158,8 +158,8 @@
 
     ajustarCanvas();
 
-    const fontSize = 7;
-    const lineHeight = 7;
+    const fontSize = 9;
+    const lineHeight = 9;
     ctx.font = `${fontSize}px monospace`;
 
     const chars = "⢀⣀⣶⣿⡇⣧⢿⠿⣤⣦⡀⡄⠈⠉⠒⠷⢦⣄⡿⣾⣿⣿";
@@ -167,9 +167,12 @@
 
     const lines = ramo.trim().split("\n");
     const maxLen = Math.max(...lines.map(l => l.length));
+    
+const dibujoWidth = maxLen * fontSize * 0.55;
+const dibujoHeight = lines.length * lineHeight;
 
-    const startX = canvas.width / 2 - (maxLen * fontSize * 0.55) / 2;
-    const startY = 25;
+const startX = (canvas.width - dibujoWidth) / 2;
+const startY = (canvas.height - dibujoHeight) / 2;
 
     lines.forEach((line, y) => {
       [...line].forEach((char, x) => {
