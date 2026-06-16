@@ -46,10 +46,11 @@ function actualizarCuenta() {
   const ahora = new Date().getTime();
   const diferencia = cumple - ahora;
 
-  if (diferencia <= 0) {
-    elemento.innerHTML = "¡Hoy es tu día especial! 🎂💙";
-    return;
-  }
+ if (diferencia <= 0) {
+  elemento.innerHTML = "🎂💙 Hoy es el cumpleaños de la más monita 💙🎂";
+  crearConfeti();
+  return;
+}
 
   const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
