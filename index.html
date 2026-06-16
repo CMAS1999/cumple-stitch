@@ -9,12 +9,20 @@
 <body>
 
   <div class="container">
-    <div class="card">
-      <h1>Feliz Cumpleaños, Clau 💙</h1>
+   <div class="card">
+  <h1>Feliz Cumpleaños, Clau 💙</h1>
 
-      <div class="stitch">💙🛸🌺</div>
+  <audio id="musicaFondo" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
 
-      <p>
+  <button onclick="toggleMusic()" id="musicBtn">
+    🎵 Reproducir música
+  </button>
+
+  <div class="stitch">💙🛸🌺</div>
+
+  <p>
         Hice esta pequeña aventura para ti, porque quería darte algo diferente,
         bonito y con mucho cariño.
       </p>
@@ -26,5 +34,24 @@
   </div>
 
   <script src="script.js"></script>
+
+<script>
+const musica = document.getElementById("musicaFondo");
+
+function toggleMusic() {
+
+  if (musica.paused) {
+    musica.play();
+    document.getElementById("musicBtn").innerHTML =
+      "⏸️ Pausar música";
+  } else {
+    musica.pause();
+    document.getElementById("musicBtn").innerHTML =
+      "🎵 Reproducir música";
+  }
+
+}
+</script>
+
 </body>
 </html>
