@@ -239,3 +239,15 @@ button:hover, a.btn:hover {
   height: 70px;
   object-fit: contain;
 }
+
+.ramo-box {
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.12);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
