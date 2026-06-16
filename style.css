@@ -234,3 +234,8 @@ button:hover, a.btn:hover {
   object-fit: contain;
 }
 
+.personaje-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
