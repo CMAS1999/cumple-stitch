@@ -63,6 +63,18 @@
 <button onclick="responderTrivia(6, 'tini')">
 🎤 Tini
 </button>
+
+        <p>7. ¿A qué carrito dejó traumado Clau? 🚗😂</p>
+
+<button onclick="responderTrivia(7, 'territory')">
+🚗 Ford Territory
+</button>
+
+<button onclick="responderTrivia(7, 'ninguna')">
+😇 Ninguna
+</button>
+
+
         
       </div>
 
@@ -87,7 +99,8 @@
         3: "tiramisu",
         4: "correcto",
         5: "si",
-        6: "susy"
+        6: "susy",
+        7: "territory"
       };
 
     if (respuesta === correctas[numero]) {
@@ -108,16 +121,22 @@ if (numero === 1) {
   alert("🐔🧦 Correcto 😂\n\nLas medias de pollo son obligatorias para Pilates 💙");
 } else if (numero === 6) {
   alert("🎃💃 Correcto 😂\n\nLa legendaria Susy Díaz hizo una aparición especial en Halloween xd");
+} else if (numero === 7) {
+  alert("🚗 Correcto 😂\n\nF por la Ford Territory. La pobre ha pasado muchas cosas feas con esa conductora xd");
 } else {
   alert("Correcto 💙");
 }
 } else {
-  alert("Nopis 😂");
+  if (numero === 7 && respuesta === "ninguna") {
+    alert("Mentira 😂\n\nSabes que tienes que presionar Ford Territory xd");
+  } else {
+    alert("Nopis 😂");
+  }
 }
 
-      if (puntosTrivia === 6) {
+      if (puntosTrivia === 7) {
         document.getElementById("resultadoTrivia").innerHTML =
-          "Te conoces muy bien a Clau 😂💙";
+          "Clau 😂💙";
         document.getElementById("resultadoTrivia").classList.remove("hidden");
 
         localStorage.setItem("triviaCompletada", "true");
