@@ -241,7 +241,7 @@ button:hover, a.btn:hover {
 }
 
 .ramo-box {
-  height: 720px;
+  height: 420px;
   position: relative;
   overflow: hidden;
   border-radius: 25px;
@@ -260,7 +260,7 @@ button:hover, a.btn:hover {
 
 #msgFinal {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   width: 100%;
   text-align: center;
   color: white;
