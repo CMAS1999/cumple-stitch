@@ -27,6 +27,8 @@
 
         <p>4. ¿Cuáles son los colores favoritos de Clau? 🎨</p>
 
+        
+
 <button onclick="responderTrivia(4, 'correcto')">
 💙 Azul, 🤍 Blanco y 🌸 Rosa
 </button>
@@ -39,7 +41,16 @@
 🧡 Naranja, 💜 Morado y 💛 Amarillo
 </button>
 
-      
+      <p>5. ¿Debería Clau llevar las famosas medias de pollo a Pilates? 🧘🐔</p>
+
+<button onclick="responderTrivia(5, 'si')">
+🐔 Sí, obviamente
+</button>
+
+<button onclick="responderTrivia(5, 'no')">
+❌ No
+</button>
+        
       </div>
 
       <div id="resultadoTrivia" class="message-box hidden"></div>
@@ -53,7 +64,7 @@
 
     function responderTrivia(numero, respuesta) {
       if (respondidas[numero]) {
-        alert("Esa ya la respondiste, joven hambreado xd 😂");
+        alert("Esa ya la respondiste, psicóloca xd 😂");
         return;
       }
 
@@ -61,19 +72,26 @@
         1: "vaca",
         2: "paloma",
         3: "tiramisu",
-        4: "correcto"
+        4: "correcto",
+        5: "si"
       };
 
       respondidas[numero] = true;
 
-      if (respuesta === correctas[numero]) {
-        puntosTrivia++;
-        alert("Correcto 💙");
-      } else {
-        alert("Nopis 😂");
-      }
+     if (respuesta === correctas[numero]) {
+  puntosTrivia++;
 
-      if (puntosTrivia === 4) {
+  if (numero === 5) {
+    alert("🐔🧦 Correcto 😂\n\nLas legendarias medias de pollo son obligatorias para Pilates 💙");
+  } else {
+    alert("Correcto 💙");
+  }
+
+} else {
+  alert("Nopis 😂");
+}
+
+      if (puntosTrivia === 5) {
         document.getElementById("resultadoTrivia").innerHTML =
           "Te conoces muy bien a Clau 😂💙";
         document.getElementById("resultadoTrivia").classList.remove("hidden");
