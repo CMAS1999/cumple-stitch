@@ -52,6 +52,17 @@
 <button onclick="responderTrivia(5, 'no')">
 ❌ No
 </button>
+
+
+        <p>6. ¿De qué se disfrazó Clau en Halloween? 🎃</p>
+
+<button onclick="responderTrivia(6, 'susy')">
+💃 Susy Díaz
+</button>
+
+<button onclick="responderTrivia(6, 'tini')">
+🎤 Tini
+</button>
         
       </div>
 
@@ -75,16 +86,19 @@
         2: "paloma",
         3: "tiramisu",
         4: "correcto",
-        5: "si"
+        5: "si",
+        6: "susy"
       };
 
       respondidas[numero] = true;
 
-     if (respuesta === correctas[numero]) {
+   if (respuesta === correctas[numero]) {
   puntosTrivia++;
 
   if (numero === 5) {
     alert("🐔🧦 Correcto 😂\n\nLas medias de pollo son obligatorias para Pilates 💙");
+  } else if (numero === 6) {
+    alert("🎃💃 Correcto 😂\n\nLa ídola Susy Díaz hizo una aparición especial en Halloween");
   } else {
     alert("Correcto 💙");
   }
@@ -93,7 +107,7 @@
   alert("Nopis 😂");
 }
 
-      if (puntosTrivia === 5) {
+      if (puntosTrivia === 6) {
         document.getElementById("resultadoTrivia").innerHTML =
           "Te conoces muy bien a Clau 😂💙";
         document.getElementById("resultadoTrivia").classList.remove("hidden");
