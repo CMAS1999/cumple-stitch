@@ -90,9 +90,10 @@
         6: "susy"
       };
 
-      respondidas[numero] = true;
+    if (respuesta === correctas[numero]) {
 
-   if (respuesta === correctas[numero]) {
+  respondidas[numero] = true;
+
   puntosTrivia++;
 
   if (numero === 5) {
