@@ -4,7 +4,7 @@ function crearCorazon() {
   const corazones = [
   "💙",
   "🤍",
-  "🌸"
+  "🩷"
 ];
 
 heart.innerHTML =
