@@ -50,11 +50,7 @@ function actualizarCuenta() {
 
   if (diferencia <= 0) {
     elemento.innerHTML =
-    `<div style="font-size:1.4em;font-weight:bold;">
-      💙 La más monita del mundo 💙
-    </div>
-
-    <div style="font-size:1.2em;margin-top:10px;">
+    `<div style="font-size:1.2em;margin-top:10px;">
       🎂 Feliz cumpleaños Monita 💙
     </div>`;
 
