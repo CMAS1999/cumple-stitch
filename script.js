@@ -38,6 +38,8 @@ function crearConfeti() {
   }
 }
 
+let cumpleCelebrado = false;
+
 function actualizarCuenta() {
   const elemento = document.getElementById("countdown");
   if (!elemento) return;
@@ -46,18 +48,98 @@ function actualizarCuenta() {
   const ahora = new Date().getTime();
   const diferencia = cumple - ahora;
 
- if (diferencia <= 0) {
-  elemento.innerHTML = "🎂💙 Hoy es el cumpleaños de la más monita 💙🎂";
-  crearConfeti();
-  return;
-}
+  if (diferencia <= 0) {
+    elemento.innerHTML =
+    `<div style="font-size:1.4em;font-weight:bold;">
+      💙 La más monita del mundo 💙
+    </div>
+
+    <div style="font-size:1.2em;margin-top:10px;">
+      🎂 Feliz cumpleaños Monita 💙
+    </div>`;
+
+    if (!cumpleCelebrado) {
+      crearConfeti();
+      lanzarFuegosArtificiales();
+
+      cumpleCelebrado = true;
+
+      setInterval(() => {
+        crearConfeti();
+        lanzarFuegosArtificiales();
+      }, 600000);
+    }
+
+    return;
+  }
 
   const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
   const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
 
-  elemento.innerHTML = `Faltan ${dias} días, ${horas} horas y ${minutos} minutos 🎂`;
+  elemento.innerHTML =
+    `Faltan ${dias} días, ${horas} horas y ${minutos} minutos 🎂`;
 }
 
 setInterval(actualizarCuenta, 1000);
 actualizarCuenta();
+
+
+
+function lanzarFuegosArtificiales() {
+  const colors = ['#ffd700','#ff6b9d','#7dd3fc','#a78bfa','#6ee7b7'];
+
+  function burst(cx, cy) {
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    for (let i = 0; i < 14; i++) {
+
+      const angle = (i / 14) * 2 * Math.PI;
+      const dist = 50 + Math.random() * 60;
+
+      const dot = document.createElement("div");
+
+      dot.style.cssText = `
+      position:fixed;
+      left:${cx}px;
+      top:${cy}px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:${color};
+      pointer-events:none;
+      z-index:9999;`;
+
+      document.body.appendChild(dot);
+
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+
+      dot.animate([
+        {
+          transform:'translate(0,0) scale(0)',
+          opacity:1
+        },
+        {
+          transform:`translate(${tx}px,${ty}px) scale(1)`,
+          opacity:0
+        }
+      ], {
+        duration:800,
+        easing:'ease-out',
+        fill:'forwards'
+      });
+
+      setTimeout(() => dot.remove(), 900);
+    }
+  }
+
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      burst(
+        Math.random() * window.innerWidth,
+        Math.random() * 300
+      );
+    }, i * 250);
+  }
+}
