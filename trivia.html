@@ -12,10 +12,13 @@
     <div class="card">
       <h1>Trivia de Clau 🧩</h1>
 
-      <audio id="musicaTrivia" autoplay loop>
+      <button onclick="toggleMusica()" id="btnMusica">
+🎵 Música para responder las preguntas 😊
+</button>
+
+<audio id="musicaTrivia" loop>
   <source src="musica2.mp3" type="audio/mpeg">
 </audio>
-
       <div class="message-box">
         <p>1. ¿Qué animal la persiguió?</p>
         <button onclick="responderTrivia(1, 'vaca')">Vaca 🐄</button>
@@ -155,12 +158,24 @@ if (numero === 1) {
       }
     }
 
-    const musicaTrivia = document.getElementById("musicaTrivia");
+  const musicaTrivia = document.getElementById("musicaTrivia");
 
-    window.addEventListener("load", () => {
-      musicaTrivia.play().catch(() => {});
-    });
+function toggleMusica() {
 
+  if (musicaTrivia.paused) {
+    musicaTrivia.play();
+
+    document.getElementById("btnMusica").innerHTML =
+      "⏸️ Pausar música";
+
+  } else {
+
+    musicaTrivia.pause();
+
+    document.getElementById("btnMusica").innerHTML =
+      "🎵 Reproducir música";
+  }
+}
   </script>
 </body>
 </html>
