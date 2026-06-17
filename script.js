@@ -44,7 +44,7 @@ function actualizarCuenta() {
   const elemento = document.getElementById("countdown");
   if (!elemento) return;
 
-  const cumple = new Date("June 19, 2026 00:00:00").getTime();
+  const cumple = new Date("June 16, 2026 00:00:00").getTime();
   const ahora = new Date().getTime();
   const diferencia = cumple - ahora;
 
