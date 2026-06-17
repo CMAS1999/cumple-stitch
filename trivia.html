@@ -12,6 +12,10 @@
     <div class="card">
       <h1>Trivia de Clau 🧩</h1>
 
+      <audio id="musicaTrivia" autoplay loop>
+  <source src="musica2.mp3" type="audio/mpeg">
+</audio>
+
       <div class="message-box">
         <p>1. ¿Qué animal la persiguió?</p>
         <button onclick="responderTrivia(1, 'vaca')">Vaca 🐄</button>
@@ -134,19 +138,29 @@ if (numero === 1) {
   }
 }
 
-      if (puntosTrivia === 7) {
+   if (puntosTrivia === 7) {
         document.getElementById("resultadoTrivia").innerHTML =
           "Clau 😂💙";
-        document.getElementById("resultadoTrivia").classList.remove("hidden");
+
+        document.getElementById("resultadoTrivia")
+          .classList.remove("hidden");
 
         localStorage.setItem("triviaCompletada", "true");
         crearConfeti();
 
         setTimeout(() => {
+          musicaTrivia.pause();
           window.location.href = "final.html";
         }, 1800);
       }
     }
+
+    const musicaTrivia = document.getElementById("musicaTrivia");
+
+    window.addEventListener("load", () => {
+      musicaTrivia.play().catch(() => {});
+    });
+
   </script>
 </body>
 </html>
