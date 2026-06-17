@@ -99,8 +99,8 @@ function lanzarFuegosArtificiales() {
       position:fixed;
       left:${cx}px;
       top:${cy}px;
-      width:8px;
-      height:8px;
+      width:16px;
+      height:16px;
       border-radius:50%;
       background:${color};
       pointer-events:none;
