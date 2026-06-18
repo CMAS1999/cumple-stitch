@@ -49,6 +49,12 @@ function actualizarCuenta() {
   const diferencia = cumple - ahora;
 
   if (diferencia <= 0) {
+
+    const btn = document.getElementById("btnAventura");
+if (btn) {
+  btn.href = "carta.html";
+  btn.innerHTML = "Abrir regalo de cumpleaños 🎂💙";
+}
     elemento.innerHTML =
     `<div style="font-size:1.2em;margin-top:10px;">
       🎂 Feliz cumpleaños Monita 💙
@@ -137,5 +143,15 @@ function lanzarFuegosArtificiales() {
         Math.random() * 300
       );
     }, i * 250);
+  }
+}
+
+function intentarAventura(event) {
+  const cumple = new Date("July 8, 2026 00:00:00").getTime();
+  const ahora = new Date().getTime();
+
+  if (ahora < cumple) {
+    event.preventDefault();
+    alert("Nopis 😂\n\nLa aventura se desbloquea recién el 8 de julio 🎂💙");
   }
 }
