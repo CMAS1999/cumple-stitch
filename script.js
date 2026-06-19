@@ -44,7 +44,7 @@ function actualizarCuenta() {
   const elemento = document.getElementById("countdown");
   if (!elemento) return;
 
-  const cumple = new Date("July 8, 2026 00:00:00").getTime();
+  const cumple = new Date("June 8, 2026 00:00:00").getTime();
   const ahora = new Date().getTime();
   const diferencia = cumple - ahora;
 
@@ -147,7 +147,7 @@ function lanzarFuegosArtificiales() {
 }
 
 function intentarAventura(event) {
-  const cumple = new Date("July 8, 2026 00:00:00").getTime();
+  const cumple = new Date("June 8, 2026 00:00:00").getTime();
   const ahora = new Date().getTime();
 
   if (ahora < cumple) {
