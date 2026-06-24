@@ -301,15 +301,19 @@ function actualizarBloqueo() {
   const ahora = Date.now();
   const diferencia = fechaCumple - ahora;
 
-  if (diferencia <= 0) {
-    document.getElementById("waitingScreen").style.display = "none";
-    document.getElementById("inicioScreen").classList.add("visible");
+if (diferencia <= 0) {
 
-    crearConfeti();
-    lanzarFuegosArtificiales();
+  document.body.classList.add("cumple");
 
-    return;
-  }
+  document.getElementById("waitingScreen").style.display = "none";
+
+  document.getElementById("inicioScreen").classList.add("visible");
+
+  crearConfeti();
+  lanzarFuegosArtificiales();
+
+  return;
+}
 
   const dias = Math.floor(diferencia / 86400000);
   const horas = Math.floor((diferencia % 86400000) / 3600000);
