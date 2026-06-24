@@ -3,45 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Cumpleaños NADOTA💙</title>
+  <title>Feliz Cumpleaños NADOTA 💙</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .device-frame {
+      background: #0a0a0f;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 520px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .waiting-screen {
+      width: 100%;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .stars-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: var(--max-op); transform: scale(1); }
+    }
+
+    .lock-icon {
+      font-size: 52px;
+      margin-bottom: 24px;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .label-top {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .big-date {
+      font-size: 52px;
+      font-weight: bold;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .big-month {
+      font-size: 24px;
+      font-weight: bold;
+      color: #7dd3fc;
+      margin-bottom: 28px;
+    }
+
+    .countdown-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .count-num {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      width: 72px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .count-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .msg-waiting {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      max-width: 300px;
+      margin-bottom: 28px;
+    }
+
+    .btn-locked {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.35);
+      padding: 13px 32px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: not-allowed;
+    }
+
+    .inicio-screen {
+      display: none;
+      min-height: 520px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+      border-radius: 28px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 28px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inicio-screen.visible {
+      display: flex;
+    }
+
+    .stitch-anim {
+      font-size: 75px;
+      animation: bounce 1.8s infinite;
+      margin-bottom: 16px;
+    }
+
+    .inicio-h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .inicio-p {
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 420px;
+      margin-bottom: 20px;
+    }
+
+    .inicio-countdown {
+      font-size: 20px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 12px 22px;
+      margin-bottom: 20px;
+    }
+
+    .btn-inicio {
+      display: inline-block;
+      text-decoration: none;
+      background: #2563eb;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="container">
-   <div class="card">
-  <h1>Feliz Cumpleaños, NADOTA 💙</h1>
+<div class="container">
+  <div class="card">
 
-  <audio id="musicaFondo" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
+    <div class="device-frame" id="waitingScreen">
+      <div class="stars-layer" id="starsLayer"></div>
 
-  <button onclick="toggleMusic()" id="musicBtn">
-    🎵 Reproducir música
-  </button>
+      <div class="waiting-screen">
+        <div class="lock-icon">🔒</div>
 
-  <div class="stitch">💙🛸🌺</div>
+        <div class="label-top">Se desbloquea el</div>
+        <div class="big-date">8</div>
+        <div class="big-month">julio 2026</div>
 
-  <p>
+        <div class="countdown-row">
+          <div>
+            <div class="count-num" id="cDias">00</div>
+            <div class="count-label">días</div>
+          </div>
+
+          <div>
+            <div class="count-num" id="cHoras">00</div>
+            <div class="count-label">horas</div>
+          </div>
+
+          <div>
+            <div class="count-num" id="cMins">00</div>
+            <div class="count-label">mins</div>
+          </div>
+        </div>
+
+        <div class="msg-waiting">
+          Algo especial está esperando por ti,<br>
+          NADOTA 💙 Vuelve el 8 de julio.
+        </div>
+
+        <button class="btn-locked">
+          Empezar aventura 🎁
+        </button>
+      </div>
+    </div>
+
+    <div class="inicio-screen" id="inicioScreen">
+      <audio id="musicaFondo" loop>
+        <source src="musica.mp3" type="audio/mpeg">
+      </audio>
+
+      <button onclick="toggleMusic()" id="musicBtn">
+        🎵 Reproducir música
+      </button>
+
+      <div class="stitch-anim">💙🛸🌺</div>
+
+      <div class="inicio-h1">
+        Feliz Cumpleaños, NADOTA 💙
+      </div>
+
+      <div class="inicio-p">
         Hice esta pequeña aventura para ti, porque quería darte algo diferente,
         bonito y con mucho cariño.
-      </p>
+      </div>
 
-      <div class="countdown" id="countdown"></div>
+      <div class="inicio-countdown">
+        🎂 Feliz cumpleaños Monita 💙
+      </div>
 
-      <a class="btn" id="btnAventura" href="#" onclick="intentarAventura(event)">
-  Empezar aventura 🎁
-</a>
+      <a class="btn-inicio" href="carta.html">
+        Abrir regalo de cumpleaños 🎂💙
+      </a>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+  </div>
+</div>
+
+<script src="script.js"></script>
 
 <script>
+const fechaCumple = new Date("July 8, 2026 00:00:00").getTime();
+// Para probar ahora usa esta línea:
+// const fechaCumple = new Date("June 1, 2026 00:00:00").getTime();
+
+function generarEstrellas() {
+  const layer = document.getElementById("starsLayer");
+
+  for (let i = 0; i < 60; i++) {
+    const estrella = document.createElement("div");
+    estrella.className = "star";
+
+    estrella.style.cssText =
+      `left:${Math.random() * 100}%;
+       top:${Math.random() * 100}%;
+       --dur:${2 + Math.random() * 4}s;
+       --delay:${Math.random() * 5}s;
+       --max-op:${0.3 + Math.random() * 0.7};`;
+
+    layer.appendChild(estrella);
+  }
+}
+
+function actualizarBloqueo() {
+  const ahora = Date.now();
+  const diferencia = fechaCumple - ahora;
+
+  if (diferencia <= 0) {
+    document.getElementById("waitingScreen").style.display = "none";
+    document.getElementById("inicioScreen").classList.add("visible");
+
+    crearConfeti();
+    lanzarFuegosArtificiales();
+
+    return;
+  }
+
+  const dias = Math.floor(diferencia / 86400000);
+  const horas = Math.floor((diferencia % 86400000) / 3600000);
+  const mins = Math.floor((diferencia % 3600000) / 60000);
+
+  document.getElementById("cDias").textContent =
+    String(dias).padStart(2, "0");
+
+  document.getElementById("cHoras").textContent =
+    String(horas).padStart(2, "0");
+
+  document.getElementById("cMins").textContent =
+    String(mins).padStart(2, "0");
+}
+
 const musica = document.getElementById("musicaFondo");
 
 function toggleMusic() {
-
   if (musica.paused) {
     musica.play();
     document.getElementById("musicBtn").innerHTML =
@@ -51,8 +322,11 @@ function toggleMusic() {
     document.getElementById("musicBtn").innerHTML =
       "🎵 Reproducir música";
   }
-
 }
+
+generarEstrellas();
+actualizarBloqueo();
+setInterval(actualizarBloqueo, 30000);
 </script>
 
 </body>
