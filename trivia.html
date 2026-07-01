@@ -13,76 +13,71 @@
       <h1>Trivia de Clau 🧩</h1>
 
       <button onclick="toggleMusica()" id="btnMusica">
-🎵 Música para responder las preguntas 😊
-</button>
+        🎵 Música para responder las preguntas 😊
+      </button>
 
-<audio id="musicaTrivia" loop>
-  <source src="musica2.mp3" type="audio/mpeg">
-</audio>
+      <audio id="musicaTrivia" loop>
+        <source src="musica2.mp3" type="audio/mpeg">
+      </audio>
+
       <div class="message-box">
         <p>1. ¿Qué animal la persiguió?</p>
         <button onclick="responderTrivia(1, 'vaca')">Vaca 🐄</button>
         <button onclick="responderTrivia(1, 'pollo')">Pollo 🐔</button>
 
         <p>2. ¿Qué animal le da miedo?</p>
-        <button onclick="responderTrivia(2, 'perro')">perro 🐶</button>
+        <button onclick="responderTrivia(2, 'perro')">Perro 🐶</button>
         <button onclick="responderTrivia(2, 'paloma')">Paloma 🕊️</button>
-        
 
         <p>3. ¿Qué postre le gusta?</p>
         <button onclick="responderTrivia(3, 'gelatina')">Gelatina 🍮</button>
         <button onclick="responderTrivia(3, 'tiramisu')">Tiramisú 🍰</button>
-        
 
         <p>4. ¿Cuáles son los colores favoritos de Clau? 🎨</p>
+        <button onclick="responderTrivia(4, 'correcto')">
+          💙 Azul, 🤍 Blanco y 🌸 Rosa
+        </button>
+        <button onclick="responderTrivia(4, 'incorrecto')">
+          💚 Verde, 🖤 Negro y ❤️ Rojo
+        </button>
+        <button onclick="responderTrivia(4, 'incorrecto')">
+          🧡 Naranja, 💜 Morado y 💛 Amarillo
+        </button>
 
-        
-
-<button onclick="responderTrivia(4, 'correcto')">
-💙 Azul, 🤍 Blanco y 🌸 Rosa
-</button>
-
-<button onclick="responderTrivia(4, 'incorrecto')">
-💚 Verde, 🖤 Negro y ❤️ Rojo
-</button>
-
-<button onclick="responderTrivia(4, 'incorrecto')">
-🧡 Naranja, 💜 Morado y 💛 Amarillo
-</button>
-
-      <p>5. ¿Debería Clau llevar las famosas medias de pollo a Pilates? 🧘🐔</p>
-
-<button onclick="responderTrivia(5, 'si')">
-🐔 Sí, obviamente
-</button>
-
-<button onclick="responderTrivia(5, 'no')">
-❌ No
-</button>
-
+        <p>5. ¿Debería Clau llevar las famosas medias de pollo a Pilates? 🧘🐔</p>
+        <button onclick="responderTrivia(5, 'si')">
+          🐔 Sí, obviamente
+        </button>
+        <button onclick="responderTrivia(5, 'no')">
+          ❌ No
+        </button>
 
         <p>6. ¿De qué se disfrazó Clau en Halloween? 🎃</p>
-
-<button onclick="responderTrivia(6, 'susy')">
-💃 Susy Díaz
-</button>
-
-<button onclick="responderTrivia(6, 'tini')">
-🎤 Tini
-</button>
+        <button onclick="responderTrivia(6, 'susy')">
+          💃 Susy Díaz
+        </button>
+        <button onclick="responderTrivia(6, 'tini')">
+          🎤 Tini
+        </button>
 
         <p>7. ¿A qué carrito dejó traumado Clau? 🚗😂</p>
+        <button onclick="responderTrivia(7, 'territory')">
+          🚗 Ford Territory
+        </button>
+        <button onclick="responderTrivia(7, 'ninguna')">
+          😇 Ninguna
+        </button>
 
-<button onclick="responderTrivia(7, 'territory')">
-🚗 Ford Territory
-</button>
-
-<button onclick="responderTrivia(7, 'ninguna')">
-😇 Ninguna
-</button>
-
-
-        
+        <p>8. ¿A cuántas abuelitas ha atropellado Clau? 👵🚗</p>
+        <button onclick="responderTrivia(8, 'cero')">
+          👵 Cero
+        </button>
+        <button onclick="responderTrivia(8, 'cincuenta')">
+          👵 Cincuenta
+        </button>
+        <button onclick="responderTrivia(8, 'todas')">
+          👵 A todas
+        </button>
       </div>
 
       <div id="resultadoTrivia" class="message-box hidden"></div>
@@ -90,9 +85,12 @@
   </div>
 
   <script src="script.js"></script>
+
   <script>
     let puntosTrivia = 0;
     let respondidas = {};
+
+    const musicaTrivia = document.getElementById("musicaTrivia");
 
     function responderTrivia(numero, respuesta) {
       if (respondidas[numero]) {
@@ -107,46 +105,49 @@
         4: "correcto",
         5: "si",
         6: "susy",
-        7: "territory"
+        7: "territory",
+        8: "todas"
       };
 
-    if (respuesta === correctas[numero]) {
+      if (respuesta === correctas[numero]) {
+        respondidas[numero] = true;
+        puntosTrivia++;
 
-  respondidas[numero] = true;
+        if (numero === 1) {
+          alert("🐄 Correcto 😂\n\nAsí es, la persiguió una vaca por ir con polo rojo xd");
+        } else if (numero === 2) {
+          alert("🕊️ Correcto 😂\n\nAsí es, le teme a las palomas... y a las gallinas también xd");
+        } else if (numero === 3) {
+          alert("🍰 Correcto 😂\n\nLe gusta tanto el tiramisú que probablemente se casaría con uno xd");
+        } else if (numero === 4) {
+          alert("💙🤍🌸 Correcto 😂\n\nClau no tiene un color favorito... tiene tres: azul, blanco y rosa");
+        } else if (numero === 5) {
+          alert("🐔🧦 Correcto 😂\n\nLas medias de pollo son obligatorias para Pilates 💙");
+        } else if (numero === 6) {
+          alert("🎃💃 Correcto 😂\n\nLa legendaria Susy Díaz hizo una aparición especial en Halloween xd");
+        } else if (numero === 7) {
+          alert("🚗 Correcto 😂\n\nF por la Ford Territory. La pobre ha pasado muchas cosas feas con esa conductora xd");
+        } else if (numero === 8) {
+          alert("👵🚗 Correcto 😂\n\nClau acabó con todas las abuelitas del Perú y tuvo que cruzar fronteras para continuar su misión en Argentina. 🤭");
+        } else {
+          alert("Correcto 💙");
+        }
 
-  puntosTrivia++;
+      } else {
+        if (numero === 7 && respuesta === "ninguna") {
+          alert("Mentira 😂\n\nSabes que tienes que presionar Ford Territory xd");
+        } else if (numero === 8 && respuesta === "cero") {
+          alert("😂 Nopis.\n\nEso es lo que dice Clau, pero la evidencia dice otra cosa.");
+        } else if (numero === 8 && respuesta === "cincuenta") {
+          alert("😂 Nopis.\n\nCreo que solamente contaste las que están cerca a su casa, pero te faltan más.");
+        } else {
+          alert("Nopis 😂");
+        }
+      }
 
-if (numero === 1) {
-  alert("🐄 Correcto 😂\n\nAsí es, la persiguió una vaca por ir con polo rojo xd");
-} else if (numero === 2) {
-  alert("🕊️ Correcto 😂\n\nAsí es, le teme a las palomas... y a las gallinas también xd");
-} else if (numero === 3) {
-  alert("🍰 Correcto 😂\n\nLe gusta tanto el tiramisú que probablemente se casaría con uno xd");
-} else if (numero === 4) {
-  alert("💙🤍🌸 Correcto 😂\n\nClau no tiene un color favorito... tiene tres: azul, blanco y rosa");
-} else if (numero === 5) {
-  alert("🐔🧦 Correcto 😂\n\nLas medias de pollo son obligatorias para Pilates 💙");
-} else if (numero === 6) {
-  alert("🎃💃 Correcto 😂\n\nLa legendaria Susy Díaz hizo una aparición especial en Halloween xd");
-} else if (numero === 7) {
-  alert("🚗 Correcto 😂\n\nF por la Ford Territory. La pobre ha pasado muchas cosas feas con esa conductora xd");
-} else {
-  alert("Correcto 💙");
-}
-} else {
-  if (numero === 7 && respuesta === "ninguna") {
-    alert("Mentira 😂\n\nSabes que tienes que presionar Ford Territory xd");
-  } else {
-    alert("Nopis 😂");
-  }
-}
-
-   if (puntosTrivia === 7) {
-        document.getElementById("resultadoTrivia").innerHTML =
-          "Clau 😂💙";
-
-        document.getElementById("resultadoTrivia")
-          .classList.remove("hidden");
+      if (puntosTrivia === 8) {
+        document.getElementById("resultadoTrivia").innerHTML = "Clau 😂💙";
+        document.getElementById("resultadoTrivia").classList.remove("hidden");
 
         localStorage.setItem("triviaCompletada", "true");
         crearConfeti();
@@ -158,24 +159,19 @@ if (numero === 1) {
       }
     }
 
-  const musicaTrivia = document.getElementById("musicaTrivia");
+    function toggleMusica() {
+      if (musicaTrivia.paused) {
+        musicaTrivia.play();
 
-function toggleMusica() {
+        document.getElementById("btnMusica").innerHTML =
+          "⏸️ Pausar música";
+      } else {
+        musicaTrivia.pause();
 
-  if (musicaTrivia.paused) {
-    musicaTrivia.play();
-
-    document.getElementById("btnMusica").innerHTML =
-      "⏸️ Pausar música";
-
-  } else {
-
-    musicaTrivia.pause();
-
-    document.getElementById("btnMusica").innerHTML =
-      "🎵 Reproducir música";
-  }
-}
+        document.getElementById("btnMusica").innerHTML =
+          "🎵 Reproducir música";
+      }
+    }
   </script>
 </body>
 </html>
